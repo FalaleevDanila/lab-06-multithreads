@@ -13,9 +13,11 @@ jobs:
   include:
     - name: "compile"
       script:
+        - chmod 755 scripts/*.sh
         - docker run -t -v $(pwd):/var/builder/ -w /var/builder --entrypoint ./scripts/compile.sh $DOCKER_IMAGE
     - name: "quality"
       script:
+        - chmod 755 scripts/*.sh
         - docker run -t -v $(pwd):/var/builder/ -w /var/builder --entrypoint ./scripts/duplication.sh $DOCKER_IMAGE
 
 notifications:
